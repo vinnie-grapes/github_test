@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SoftAssertions {
@@ -22,11 +23,13 @@ public class SoftAssertions {
     void findPageSoftAssertionsAndJUnit5Text() {
         // открыть страничку selenide
         open("https://github.com/selenide/selenide");
+        $(".BorderGrid-cell").shouldHave(text("selenide.org"));
         // перейти в раздел wiki
-        $("[data-tab-item=i4wiki-tab]").click();
-        // в списке страниц (Pages) есть страница SoftAssertions и перейти
+        $(By.linkText("Wiki")).click();
+        // в списке страниц есть страница SoftAssertions и переход по ней
+        $(withText("Show 1 more pages")).click();
         $(By.linkText("Soft assertions")).shouldBe(visible).click();
-        //  проверьте что внутри есть пример кода для JUnit5
+        // на странице есть пример кода для JUnit5
         $$("#wiki-body").findBy(text("Using JUnit5 extend test class")).shouldBe(visible);
     }
 }
