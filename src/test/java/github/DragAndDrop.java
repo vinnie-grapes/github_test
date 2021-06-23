@@ -10,13 +10,19 @@ public class DragAndDrop {
 
     @Test
     void DragAndDropTest() {
-        open("https://the-internet.herokuapp.com/drag_and_drop");
 
+        // Открыть страницу https://the-internet.herokuapp.com/drag_and_drop
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        $("#content").shouldHave(text("Drag and Drop"));
+
+        // Проверить, что прямоугольники действительно находятся на своих местах
         $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
 
+        // Перенести прямоугольник А на место В
         $("#column-a").dragAndDropTo($("#column-b"));
 
+        // Проверить, что прямоугольники действительно поменялись
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
     }
