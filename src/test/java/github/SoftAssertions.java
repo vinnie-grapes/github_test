@@ -26,10 +26,11 @@ public class SoftAssertions {
         $(".BorderGrid-cell").shouldHave(text("selenide.org"));
         // перейти в раздел wiki
         $(By.linkText("Wiki")).click();
-        // в списке страниц есть страница SoftAssertions и переход по ней
-        $(withText("Show 1 more pages")).click();
-        $(By.linkText("Soft assertions")).shouldBe(visible).click();
-        // на странице есть пример кода для JUnit5
-        $$("#wiki-body").findBy(text("Using JUnit5 extend test class")).shouldBe(visible);
+        // в списке страниц есть страница Quick Start и переход по ней
+        $(withText("Quick Start")).click();
+        // в блоке справа есть ссылка на Custom conditions и переход по ней
+        $(By.linkText("Custom conditions")).shouldBe(visible).click();
+        // на странице есть Author: Olivier Grech
+        $$("#wiki-body").findBy(text("Author: Olivier Grech")).shouldBe(visible);
     }
 }
