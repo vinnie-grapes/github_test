@@ -11,7 +11,7 @@ public class DragAndDrop {
     @Test
     void DragAndDropTest() {
 
-        // Открыть страницу https://the-internet.herokuapp.com/drag_and_drop
+        // Открыть страницу и проверить заголовок
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#content").shouldHave(text("Drag and Drop"));
 
